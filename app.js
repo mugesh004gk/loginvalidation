@@ -1,5 +1,7 @@
 const express=require("express")
+const cors=require("cors")
 const app= express()
+app.use(cors())
 app.use(express.json())
 const mongoose=require("mongoose")
 const port = 4000
@@ -11,7 +13,7 @@ mongoose.connect(URL).then(()=>{
 .catch((err)=>{
     console.log(err)
 })
-
+//https://loginvalidation-pimh.onrender.com
 app.use("/user",userRouter)
 
 app.listen(port,()=>{
