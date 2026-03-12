@@ -24,7 +24,41 @@ userRouter.get("/userget",async(req,res)=>{
         console.log(err)
     }
 })
+userRouter.get("/:id",async(req,res)=>{
+    try{
+        let result=await userController.userid(req)
+        if(result){
+            return res.send(result)
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+})
 
+userRouter.put("/:id",async(req,res)=>{
+    try{
+        let result =await userController.userupdate(req)
+        if(result){
+            return res.send(result)
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+})
+
+userRouter.delete("/:id",async(req,res)=>{
+    try{
+        let result=await userController.userdelete(req)
+        if(result){
+            return res.send(result)
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+})
 userRouter.post("/loginapi",async(req,res)=>{
     try{
         let result=await userController.login(req)
